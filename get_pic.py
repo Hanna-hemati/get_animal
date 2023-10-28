@@ -1,6 +1,8 @@
-# part 1
-import requests # we us this library for interaction with http protocol
 import time
+import os
+
+import requests # we us this library for interaction with http protocol
+
 
 def random_quote():
     """
@@ -17,21 +19,24 @@ def send_notification(quote: str, author: str) -> str:
     """
     This function sends a notification to discord channel
     """
-
+    
     payload = {
       "content": f"quote of the day:\n{quote}\n{author}\n------------"
     }
-    dicord = "https://discord.com/api/webhooks/1162322646021714040/zeTDFjHnly0NZRfpU_hG_GTomnARmXJMVpzUYdjzHWnkXfFbQBEmaCr4k4vjcVyB4HLi"
+    dicord = os.getenv("WEBHOOK_URL")
     res = requests.post(dicord, data=payload)
 
     return "done"
     
 if __name__ == "__main__":
+    
+    while True:
+        time.sleep(3) 
+        print("sending notification")
+        quote, author = random_quote()
+        send_notification(quote, author)
 
-    quote, author = random_quote()
-    send_notification(quote, author)
-
-    print("done")
+        print("done")
 
 # important points:
 # defining meaningful names for variables and functions
