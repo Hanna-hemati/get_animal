@@ -1,4 +1,4 @@
-# Get the animal picture by calling api 
+# Get the animal picture by calling API
 
 
 ### Tools:
