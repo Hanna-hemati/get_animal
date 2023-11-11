@@ -29,6 +29,7 @@ def send_notification(quote: str, author: str) -> str:
     return "done"
     
 if __name__ == "__main__":
+    print("Program started...")
     
     while True:
         time.sleep(3) 
